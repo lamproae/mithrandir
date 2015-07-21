@@ -2,7 +2,13 @@
 
 /bin/mount -a
 
-mount -t proc none /proc
-mount -t sysfs none /sys
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
 
-/sbin/mdev -s
+mdev -s
+
+ifconfig eth0 up
+ifconfig eth0 10.71.1.141 netmask 255.255.255.0
+ifconfig lo up
+
+hostname mithrandir
