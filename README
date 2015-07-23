@@ -1,0 +1,1 @@
+sudo qemu-system-x86_64 -m 1024 -net nic -net tap,ifname=tap0,script=no,downscript=no -kernel ../build/arch/x86/boot/bzImage
