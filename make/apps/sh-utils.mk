@@ -1,9 +1,10 @@
 .PHONY: build config install all
 
-SOURCE=$(APPS_DIR)/ltrace/ltrace-$(VERSION)
-VERSION=0.7.3
+SOURCE=$(APPS_DIR)/sh-utils/sh-utils-$(VERSION)
+VERSION=2.0
 
-all: build install 
+#all: build install 
+all:  
 
 build: config 
 	@cd $(SOURCE); \
@@ -14,7 +15,7 @@ config:
 
 
 install:
-	sudo $(INSTALL) $(SOURCE)/ltrace $(ROOT_DIR)/bin/ltrace
+	sudo $(INSTALL) $(SOURCE)/env $(ROOT_DIR)/bin/env
 
 clean:
 	@cd $(SOURCE); \

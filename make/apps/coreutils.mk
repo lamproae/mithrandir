@@ -1,7 +1,7 @@
 .PHONY: build config install all
 
-SOURCE=$(APPS_DIR)/ltrace/ltrace-$(VERSION)
-VERSION=0.7.3
+SOURCE=$(APPS_DIR)/coreutils/coreutils-$(VERSION)
+VERSION=8.24
 
 all: build install 
 
@@ -14,7 +14,7 @@ config:
 
 
 install:
-	sudo $(INSTALL) $(SOURCE)/ltrace $(ROOT_DIR)/bin/ltrace
+	@cd $(SOURCE) && find ./src -perm 775 | xargs -i sudo $(INSTALL) {} $(ROOT_DIR)/bin/
 
 clean:
 	@cd $(SOURCE); \
