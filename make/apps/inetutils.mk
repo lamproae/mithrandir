@@ -1,10 +1,9 @@
 .PHONY: build config install all
 
-SOURCE=$(APPS_DIR)/coreutils/coreutils-$(VERSION)
-VERSION=8.24
+SOURCE=$(APPS_DIR)/inetutils/inetutils-$(VERSION)
+VERSION=1.9.4
 
-all: 
-#all: build install 
+all: build install 
 
 build: config 
 	@cd $(SOURCE); \
@@ -15,7 +14,7 @@ config:
 
 
 install:
-	find $(SOURCE)/src -perm 775 ! -name ".deps" | xargs -i sudo $(INSTALL) {} $(ROOT_DIR)/bin/
+	find $(SOURCE) -name "*d" | xargs -i sudo $(INSTALL) {} $(ROOT_DIR)/usr/sbin/
 
 clean:
 	@cd $(SOURCE); \

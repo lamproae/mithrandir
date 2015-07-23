@@ -15,7 +15,8 @@ rootfs:
 
 apps:
 	for i in $(APPS); do \
-	    $(MAKE) -f $$i || exit 1; \
+	    $(MAKE) -f $$i; \
+# 	    $(MAKE) -f $$i || exit 1; \
 	done	
 
 modules:

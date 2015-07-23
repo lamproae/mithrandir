@@ -1,10 +1,9 @@
 .PHONY: build config install all
 
-SOURCE=$(APPS_DIR)/coreutils/coreutils-$(VERSION)
-VERSION=8.24
+SOURCE=$(APPS_DIR)/openssh/openssh-$(VERSION)
+VERSION=6.9p1
 
-all: 
-#all: build install 
+all: build install 
 
 build: config 
 	@cd $(SOURCE); \
@@ -15,7 +14,7 @@ config:
 
 
 install:
-	find $(SOURCE)/src -perm 775 ! -name ".deps" | xargs -i sudo $(INSTALL) {} $(ROOT_DIR)/bin/
+	find $(SOURCE)/ -perm 775 | xargs -i sudo $(INSTALL) {} $(ROOT_DIR)/sbin/
 
 clean:
 	@cd $(SOURCE); \
