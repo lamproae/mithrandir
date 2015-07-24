@@ -1,25 +1,26 @@
-.PHONY: build config install all
-
 SOURCE=$(APPS_DIR)/bash/bash-$(VERSION)
 VERSION=4.3
 
 all: build install 
 
 build: config 
-	@cd $(SOURCE); \
-	make 
+	@cd $(SOURCE) && make
 
 config:
-	@cd $(SOURCE) && ./configure CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS) --disable-werror
+	@if [ !-f "$(SOURCE)/Makefile" ]; then \
+	    echo "-----------------------------------------------------"; \
+	    echo "		Configure	Bash"			; \
+	    echo "-----------------------------------------------------"; \
+	    cd $(SOURCE) && ./configure CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS) --disable-werror; \
+	if
 
 
 install:
-	sudo $(INSTALL) $(SOURCE)/bash $(ROOT_DIR)/bin/bash
+	$(INSTALL) $(SOURCE)/bash $(ROOT_DIR)/bin/bash
 	$(STRIP) $(ROOT_DIR)/bin/bash
 	@cd $(ROOT_DIR)/bin && ln -sf bash sh
 
 clean:
-	@cd $(SOURCE); \
-	make clean
+	@cd $(SOURCE) && make clean
 
 .PHONY: config build clean install
