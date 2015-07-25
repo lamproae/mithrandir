@@ -9,7 +9,7 @@ build: config
 	@cd $(SOURCE) && make 
 
 config:
-	@if [ !-f "$(SOURCE)/Makefile" ]; then \
+	@if [ ! -f $(SOURCE)/Makefile ]; then \
 	    @cd $(SOURCE) && ./configure CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS); \
 	fi
 

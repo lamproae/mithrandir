@@ -3,17 +3,13 @@ VERSION=4.3
 
 all: build install 
 
-build: config 
+build: config
 	@cd $(SOURCE) && make
 
 config:
-	@if [ !-f "$(SOURCE)/Makefile" ]; then \
-	    echo "-----------------------------------------------------"; \
-	    echo "		Configure	Bash"			; \
-	    echo "-----------------------------------------------------"; \
+	@if [ ! -f $(SOURCE)/Makefile ]; then \
 	    cd $(SOURCE) && ./configure CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS) --disable-werror; \
-	if
-
+	fi
 
 install:
 	$(INSTALL) $(SOURCE)/bash $(ROOT_DIR)/bin/bash

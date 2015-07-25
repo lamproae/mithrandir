@@ -1,10 +1,10 @@
 all: compile-prepare
 
 compile-prepare:
-	@if [ !-d "$(BUILD_DIR)" ]; then \
+	@if [ ! -d $(BUILD_DIR) ]; then \
 	    $(MKDIR) $(BUILD_DIR); \
 	fi
-	@if [ !-d "$(ROOT_DIR)" ]; then \
+	@if [ ! -d $(ROOT_DIR) ]; then \
 	    $(MKDIR) $(ROOT_DIR); \
 	fi
 	$(MKDIR) -p $(ROOT_DIR)/sbin 
