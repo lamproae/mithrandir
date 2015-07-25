@@ -96,5 +96,4 @@ config.status
 
 build
 rootfs
-apps
 test

@@ -35,6 +35,9 @@ install:
 
 clean:
 	@cd $(SOURCE) && $(MAKE) clean
+	@cd $(SOURCE) && $(MAKE) distclean
+	@cd $(LIBPCAP) && $(MAKE) clean
+	@cd $(LIBPCAP) && $(MAKE) distclean
 
 
 .PHONY: build config install all clean

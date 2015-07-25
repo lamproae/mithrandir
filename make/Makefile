@@ -52,7 +52,7 @@ clean:
 	    echo "			Cleaning "$$i"		";	\
 	    echo "" ; \
 	    echo "--------------------------------------------------------------"; \
-	    $(MAKE) -f $$i clean; \
+	    $(MAKE) -f apps/$$i.mk clean; \
 	done	
 	$(MAKE) -f kernel.mk clean
 
