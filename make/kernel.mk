@@ -10,6 +10,8 @@ show:
 	@echo "" ; 
 	@echo "--------------------------------------------------------------"; 
 
+config: config-kernel
+
 config-kernel: $(BUILD_DIR)/.config
 
 

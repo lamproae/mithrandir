@@ -16,7 +16,7 @@ ifeq ($(PLATFORM),)
     $(error Please set the target platform!) 
 endif
 
-all: prepare build 
+all: prepare config build 
 
 boot:
 	$(SCRIPT_DIR)/boot.sh
@@ -29,11 +29,16 @@ prepare:
 			echo "Unsupported archetecture!";;  \
 	esac
 
+config:
+	$(MAKE) -C $(PROJECT_DIR)/make config
+
 build:
 	$(MAKE) -C $(PROJECT_DIR)/make all
 
 clean:
 	$(MAKE) -C $(PROJECT_DIR)/make clean
 
+distclean:
+	$(MAKE) -C $(PROJECT_DIR)/make distclean
 
 .PHONY: all build clean prepare make

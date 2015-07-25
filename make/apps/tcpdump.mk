@@ -10,9 +10,9 @@ tcpdump: config build install
 build: config 
 	@cd $(SOURCE) && $(MAKE)
 
-config:
+config: libpcap-config libpcap-build
 	@if [ ! -f $(SOURCE)/Makefile ]; then \
-	    cd $(SOURCE) && ./configure --libdir=$(APPS_DIR)/libpcap/libpcap-1.6.2 CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS); \
+	    cd $(SOURCE) && ./configure --libdir=$(LIBPCAP) CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS); \
 	fi
 
 libpcap: libpcap-config libpcap-build libpcap-install
@@ -20,7 +20,7 @@ libpcap: libpcap-config libpcap-build libpcap-install
 
 libpcap-config:
 	@if [ ! -f $(LIBPCAP)/Makefile ]; then \
-	    cd $(LIBPCAP) && ./configure --libdir=$(APPS_DIR)/libpcap/libpcap-1.6.2 CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS); \
+	    cd $(LIBPCAP) && ./configure CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS); \
 	fi
 
 libpcap-build:
@@ -34,10 +34,11 @@ install:
 	@cd $(SOURCE) && $(MAKE) DESTDIR=$(ROOT_DIR) install
 
 clean:
-	@cd $(SOURCE) && $(MAKE) clean
-	@cd $(SOURCE) && $(MAKE) distclean
 	@cd $(LIBPCAP) && $(MAKE) clean
-	@cd $(LIBPCAP) && $(MAKE) distclean
+	@cd $(SOURCE) && $(MAKE) clean
 
+distclean:
+	@cd $(LIBPCAP) && $(MAKE) distclean
+	@cd $(SOURCE) && $(MAKE) distclean
 
 .PHONY: build config install all clean

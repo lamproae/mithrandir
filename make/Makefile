@@ -37,14 +37,25 @@ apps:
 	    echo "			Building "$$i"		";	\
 	    echo "" ; \
 	    echo "--------------------------------------------------------------"; \
-	    $(MAKE) -f apps/$$i.mk; \
+	    $(MAKE) -f apps/$$i.mk || exit 1; \
 	done	
 
 modules:
 
 kernel: 
 	$(MAKE) -f kernel.mk
-	
+
+config:
+	@for i in $(APPS); do  \
+	    echo "--------------------------------------------------------------" ; \
+	    echo "" ; \
+	    echo "			Configuring "$$i"		";	\
+	    echo "" ; \
+	    echo "--------------------------------------------------------------"; \
+	    $(MAKE) -f apps/$$i.mk $@ || exit 1; \
+	done	
+	$(MAKE) -f kernel.mk $@
+
 clean:
 	for i in $(APPS); do \
 	    echo "--------------------------------------------------------------" ; \
@@ -52,8 +63,13 @@ clean:
 	    echo "			Cleaning "$$i"		";	\
 	    echo "" ; \
 	    echo "--------------------------------------------------------------"; \
-	    $(MAKE) -f apps/$$i.mk clean; \
+	    $(MAKE) -f apps/$$i.mk clean || exit 1; \
 	done	
 	$(MAKE) -f kernel.mk clean
 
-.PHONY: rootfs all apps modules kernel prepare
+distclean:
+	for i in $(APPS); do \
+	    $(MAKE) -f apps/$$i.mk distclean || exit 1; \
+	done	
+
+.PHONY: rootfs all apps modules kernel prepare config

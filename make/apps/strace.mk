@@ -18,6 +18,8 @@ install:
 
 clean:
 	@cd $(SOURCE) && make clean
+
+distclean:
 	@cd $(SOURCE) && make distclean
 
 

@@ -9,16 +9,19 @@ build: config
 	@cd $(SOURCE) && make 
 
 config:
-	@if [ ! -f $(SOURCE)/Makefile ]; then \
-	    @cd $(SOURCE) && ./configure CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS); \
-	fi
-
+	echo "This has problem"
 
 install:
 	sudo $(INSTALL) $(SOURCE)/env $(ROOT_DIR)/bin/env
 
-clean:
-	@cd $(SOURCE) && make clean
-	@cd $(SOURCE) && make distclean
+clean:  
+	echo "This has problem"
+
+#	@cd $(SOURCE) && make clean
+
+distclean:
+	echo "This has problem"
+
+#	@cd $(SOURCE) && make distclean
 
 .PHONY: config build clean install

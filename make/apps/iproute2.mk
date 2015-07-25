@@ -16,6 +16,8 @@ install:
 
 clean:
 	@cd $(SOURCE) && $(MAKE) clean
+
+distclean:
 	@cd $(SOURCE) && $(MAKE) distclean
 
 

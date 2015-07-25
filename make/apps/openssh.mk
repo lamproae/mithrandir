@@ -25,6 +25,8 @@ install:
 
 clean:
 	@cd $(SOURCE) && make clean
+
+distclean:
 	@cd $(SOURCE) && make distclean
 
 .PHONY: config build clean install
