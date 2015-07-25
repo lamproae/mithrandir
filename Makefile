@@ -30,15 +30,15 @@ prepare:
 	esac
 
 config:
-	$(MAKE) -C $(PROJECT_DIR)/make config
+	$(MAKE) -C $(PROJECT_DIR)/make $@
 
 build:
-	$(MAKE) -C $(PROJECT_DIR)/make all
+	$(MAKE) -C $(PROJECT_DIR)/make 
 
 clean:
-	$(MAKE) -C $(PROJECT_DIR)/make clean
+	$(MAKE) -C $(PROJECT_DIR)/make $@
 
 distclean:
-	$(MAKE) -C $(PROJECT_DIR)/make distclean
+	$(MAKE) -C $(PROJECT_DIR)/make $@
 
 .PHONY: all build clean prepare make

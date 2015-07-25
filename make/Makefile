@@ -23,12 +23,12 @@ all: prepare build
 
 prepare:
 	$(call print_build, $@)
-	$(MAKE) -f prepare.mk
+	$(MAKE) -f $@.mk
 
 build: apps modules rootfs kernel
 
 rootfs:
-	$(MAKE) -f rootfs.mk
+	$(MAKE) -f $@.mk
 
 apps:
 	@for i in $(APPS); do  \
@@ -43,7 +43,7 @@ apps:
 modules:
 
 kernel: 
-	$(MAKE) -f kernel.mk
+	$(MAKE) -f $@.mk
 
 config:
 	@for i in $(APPS); do  \
@@ -63,13 +63,13 @@ clean:
 	    echo "			Cleaning "$$i"		";	\
 	    echo "" ; \
 	    echo "--------------------------------------------------------------"; \
-	    $(MAKE) -f apps/$$i.mk clean || exit 1; \
+	    $(MAKE) -f apps/$$i.mk $@ || exit 1; \
 	done	
-	$(MAKE) -f kernel.mk clean
+	$(MAKE) -f kernel.mk $@ 
 
 distclean:
 	for i in $(APPS); do \
-	    $(MAKE) -f apps/$$i.mk distclean || exit 1; \
+	    $(MAKE) -f apps/$$i.mk $@ || exit 1; \
 	done	
 
 .PHONY: rootfs all apps modules kernel prepare config
