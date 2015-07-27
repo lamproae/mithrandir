@@ -7,29 +7,24 @@ show:
 	@echo "--------------------------------------------------------------" 
 	@echo "" 
 	@echo "			Building "linux-$(VERSION)"		"	
-	@echo "" ; 
-	@echo "--------------------------------------------------------------"; 
-
-config: config-kernel
+	@echo ""  
+	@echo "--------------------------------------------------------------" 
 
 config-kernel: $(BUILD_DIR)/.config
-
 
 build-kernel:
 	@cd $(SOURCE) && $(MAKE) O=$(BUILD_DIR)	
 
-
 $(BUILD_DIR)/.config:
-	@if [ !-f "$(BUILD_DIR)/.config" ]; then \
-	    cd $(SOURCE) && $(MAKE) O=$(BUILD_DIR) defconfig \
+	@if [ ! -f "$(BUILD_DIR)/.config" ]; then \
+	    cd $(SOURCE) && $(MAKE) O=$(BUILD_DIR) defconfig; \
 	fi
-
 clean:
 	@echo "--------------------------------------------------------------" 
 	@echo "" 
 	@echo "			Cleaning "linux-$(VERSION)"		"	
-	@echo "" ; 
-	@echo "--------------------------------------------------------------"; 
+	@echo ""  
+	@echo "--------------------------------------------------------------" 
 	@cd $(SOURCE) && $(MAKE) O=$(BUILD_DIR)	clean
 
 .PHONY: rootfs all apps modules kernel
