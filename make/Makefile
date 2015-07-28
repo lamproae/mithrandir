@@ -3,16 +3,33 @@
 include $(MAKE_DIR)/.rule
 include $(SCRIPT_DIR)/function.mk
 
-INSTALL		= 	sudo  install --owner=root --group=root -D --verbose
+INSTALL		= sudo  install --owner=root --group=root -D --verbose
 
-STRIP		= 	sudo strip
-CP		=	sudo cp
-CHOWN		=	sudo chown
-CHGRP		=	sudo chgrp
-CHMOD		=	sudo chmod
+CP		= sudo cp
+CHOWN		= sudo chown
+CHGRP		= sudo chgrp
+CHMOD		= sudo chmod
 
-MAKE		=	make
-MKDIR		=	mkdir
+DEPMOD		= /sbin/depmod
+KALLSYMS	= scripts/kallsyms
+PERL		= perl
+CHECK		= sparse
+MAKE		= make
+MKDIR		= mkdir
+AWK		= awk
+SED		= sed
+
+AR		=$(CROSS_COMPILE)ar
+LD		=$(CROSS_COMPILE)ld
+CC		=$(CROSS_COMPILE)gcc
+CXX		=$(CROSS_COMPILE)g++
+AS		=$(CROSS_COMPILE)as
+nm		=$(CROSS_COMPILE)nm
+STRIP		=$(CROSS_COMPILE)strip
+RANLIB		=$(CROSS_COMPILE)ranlib
+OBJCOPY		=$(CROSS_COMPILE)objcopy
+OBJDUMP		=$(CROSS_COMPILE)objdump
+
 
 APP_MAKE = $(MAKE_DIR)/apps
 

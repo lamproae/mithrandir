@@ -4,11 +4,10 @@ VERSION=1.9.4
 all: build install 
 
 build: config 
-	@cd $(SOURCE) && make
-
+	@cd $(SOURCE) && make 
 config:
 	@if [ ! -f $(SOURCE)/Makefile ]; then \
-	    cd $(SOURCE) && ./configure CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS); \
+	    cd $(SOURCE) && ./configure --host=$(ARCH) CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS); \
 	fi
 
 

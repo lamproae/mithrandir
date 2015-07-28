@@ -10,9 +10,7 @@ SCRIPT_DIR	=	$(PROJECT_DIR)/script
 BUILD_DIR	=	$(PROJECT_DIR)/build
 ROOT_DIR	=	$(PROJECT_DIR)/rootfs
 
-PLATFORM	:=	$(board)
-
-ifeq ($(PLATFORM),)
+ifeq ($(ARCH),)
     $(error Please set the target platform!) 
 endif
 
@@ -22,9 +20,9 @@ boot:
 	$(SCRIPT_DIR)/boot.sh
 
 prepare: 
-	@case $(PLATFORM) in  \
+	@case $(ARCH) in  \
 		x86_64 | arm)	\
-			ln -sf $(PROJECT_DIR)/make/rule/$(PLATFORM).mk $(PROJECT_DIR)/make/.rule;;  \
+			ln -sf $(PROJECT_DIR)/make/rule/$(ARCH).mk $(PROJECT_DIR)/make/.rule;;  \
 		*) 	\
 			echo "Unsupported archetecture!";;  \
 	esac

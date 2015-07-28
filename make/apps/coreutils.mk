@@ -1,5 +1,5 @@
 SOURCE=$(APPS_DIR)/coreutils/coreutils-$(VERSION)
-VERSION=8.24
+VERSION=8.8
 
 all: build install 
 
@@ -8,7 +8,7 @@ build: config
 
 config:
 	@if [ ! -f $(SOURCE)/Makefile ]; then \
-	    cd $(SOURCE) && ./configure CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS) --disable-werror; \
+	    cd $(SOURCE) && ./configure --host=$(ARCH) CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS) --disable-werror; \
 	fi
 
 
