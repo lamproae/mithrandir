@@ -1,5 +1,5 @@
 SOURCE=$(APPS_DIR)/coreutils/coreutils-$(VERSION)
-VERSION=8.8
+VERSION=8.23
 
 all: build install 
 
