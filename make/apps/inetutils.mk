@@ -1,5 +1,5 @@
 SOURCE=$(APPS_DIR)/inetutils/inetutils-$(VERSION)
-VERSION=1.9.4
+VERSION=1.9.2
 
 all: build install 
 

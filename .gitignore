@@ -90,10 +90,6 @@ x509.genkey
 # Kconfig presets
 all.config
 
-config.h
-config.log
-config.status
-
 build
 rootfs
 test
