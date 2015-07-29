@@ -1,5 +1,4 @@
-SOURCE=$(APPS_DIR)/iproute2/iproute2-$(VERSION)
-VERSION=4.0.0
+SOURCE=$(APPS_DIR)/iproute2
 
 all: build install 
 
