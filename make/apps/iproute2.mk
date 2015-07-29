@@ -1,4 +1,5 @@
-SOURCE=$(APPS_DIR)/iproute2
+SOURCE=$(APPS_DIR)/iproute2/iproute2-$(VERSION)
+VERSION=4.0.0
 
 all: build install 
 
@@ -6,10 +7,7 @@ build: config
 	@cd $(SOURCE) && $(MAKE)
 
 config:
-	@if [ ! -f $(SOURCE)/Makefile ]; then \
-	    cd $(SOURCE) && ./configure CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS); \
-	fi
-
+	cd $(SOURCE) && ./configure --host=$(ARCH) CC=$(CC) CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS)
 
 install:
 	@cd $(SOURCE) && $(MAKE) DESTDIR=$(ROOT_DIR) install

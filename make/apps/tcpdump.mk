@@ -12,7 +12,7 @@ build: config
 
 config: libpcap-config libpcap-build
 	@if [ ! -f $(SOURCE)/Makefile ]; then \
-	    cd $(SOURCE) && ./configure --libdir=$(LIBPCAP) CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS); \
+	    cd $(SOURCE) && ./configure --host=$(ARCH) --with-pcap=linux CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS); \
 	fi
 
 libpcap: libpcap-config libpcap-build libpcap-install
@@ -20,7 +20,7 @@ libpcap: libpcap-config libpcap-build libpcap-install
 
 libpcap-config:
 	@if [ ! -f $(LIBPCAP)/Makefile ]; then \
-	    cd $(LIBPCAP) && ./configure CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS); \
+	    cd $(LIBPCAP) && ./configure --host=$(ARCH) --with-pcap=linux CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS); \
 	fi
 
 libpcap-build:

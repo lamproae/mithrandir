@@ -8,7 +8,7 @@ build: config
 
 config:
 	@if [ ! -f $(SOURCE)/Makefile ]; then \
-	    cd $(SOURCE) && ./configure CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS); \
+	    cd $(SOURCE) && ./configure --host=$(ARCH) CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS); \
 	fi
 
 

@@ -10,8 +10,6 @@ SCRIPT_DIR	=	$(PROJECT_DIR)/script
 BUILD_DIR	=	$(PROJECT_DIR)/build
 ROOT_DIR	=	$(PROJECT_DIR)/rootfs
 
-PLATFORM	:=	$(board)
-
 ifeq ($(ARCH),)
     $(error Please set the target platform!) 
 endif
