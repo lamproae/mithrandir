@@ -118,7 +118,7 @@ function set_compile_env()
     case $ARCH in
 	x86_64) toolchain=x86_64-unknown-linux-gnu
 	    ;;
-	arm) toolchain=arm-none-linux-gnueabi
+	arm) toolchain=arm-unknown-linux-gnueabi
 	    ;;
 	*) echo "Can't find toolchain for unknown architecture: $ARCH"
 	    ;;
