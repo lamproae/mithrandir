@@ -1,0 +1,13 @@
+enable_bash=no
+enable_busybox=no
+enable_iproute2=no
+enable_sh-utils=no
+enable_systemd=no
+enable_sysvinit=no
+enable_trace-cmd=no
+enable_tcpdump=no
+enable_ltrace=no
+enable_strace=no
+enable_openssh=no
+enable_coreutils=no
+enable_inetutils=no

@@ -33,8 +33,9 @@ OBJDUMP		=$(CROSS_COMPILE)objdump
 
 APP_MAKE = $(MAKE_DIR)/apps
 
-# APPS = $(wildcard $(APP_MAKE)/*.mk)
-APPS = $(basename $(notdir $(wildcard $(APP_MAKE)/*.mk)))
+#APPS = $(basename $(notdir $(wildcard $(APP_MAKE)/*.mk)))
+APPS = $(shell  sed -n 's/enable_\(.*\)=yes/\1/p' ./apps.rule)
+
 
 all: prepare build
 
